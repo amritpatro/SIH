@@ -1,293 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduQuest – Gamified STEM Learning</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EduQuest – Gamified STEM</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
-  <!-- Language Selection -->
-  <div id="language-screen" class="screen active">
-    <div class="container">
-      <div class="header">
-        <h1>EduQuest</h1>
-        <p class="subtitle">Gamified STEM Learning</p>
-      </div>
-      <h2>Choose Your Language</h2>
-      <div class="language-options">
-        <button class="language-btn" data-lang="en">English</button>
-        <button class="language-btn" data-lang="hi">हिन्दी</button>
-        <button class="language-btn" data-lang="od">ଓଡ଼ିଆ</button>
-      </div>
+<!-- ░░░ Language Selection ░░░ -->
+<div id="language-screen" class="screen active">
+  <header class="header">
+    <h1 class="logo">EduQuest</h1>
+    <p class="subtitle">Gamified STEM Learning</p>
+  </header>
+  <div class="language-selection">
+    <h2>Choose Your Language</h2>
+    <div class="language-options">
+      <button class="language-btn" data-lang="en"><span>English</span></button>
+      <button class="language-btn" data-lang="hi"><span>हिन्दी</span></button>
+      <button class="language-btn" data-lang="od"><span>ଓଡ଼ିଆ</span></button>
     </div>
   </div>
+</div>
 
-  <!-- Dashboard -->
-  <div id="dashboard-screen" class="screen">
-    <header class="app-header">
-      <div class="header-content">
-        <button id="menu-btn" class="icon-btn">☰</button>
-        <h1 id="dashboard-title">EduQuest</h1>
-      </div>
-    </header>
+<!-- ░░░ Dashboard ░░░ -->
+<div id="dashboard-screen" class="screen">
+  <header class="app-header">
+    <div class="header-content">
+      <button id="menu-btn" class="icon-btn">☰</button>
+      <h1>EduQuest</h1>
+      <button id="profile-btn" class="icon-btn">👤</button>
+    </div>
+  </header>
 
-    <main class="dashboard-content">
-      <section class="welcome-banner">
-        <h2 id="welcome-text">Hello, <span id="username">Student</span>!</h2>
+  <main class="dashboard-content">
+    <section class="progress-section">
+      <div class="welcome-banner">
+        <h2>Hello, <span id="username">Student</span>!</h2>
         <div class="progress-stats">
-          <div class="stat"><span id="total-points">0</span><small>Points</small></div>
-          <div class="stat"><span id="lessons-completed">0</span><small>Lessons</small></div>
-          <div class="stat"><span id="badges-count">0</span><small>Badges</small></div>
+          <div class="stat"><span id="total-points">0</span><span class="stat-label">Points</span></div>
+          <div class="stat"><span id="badges-count">0</span><span class="stat-label">Badges</span></div>
+          <div class="stat"><span id="lessons-completed">0</span><span class="stat-label">Lessons</span></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="lessons-section">
-        <h3 id="lessons-label">STEM Lessons</h3>
-        <div class="lessons-grid">
-          <div class="lesson-card" data-lesson="math">
-            <h4 id="math-lesson-title">Math Quiz</h4>
-            <p id="math-lesson-desc">Solve fun math puzzles</p>
-            <button class="start-lesson-btn">Start</button>
-          </div>
-          <div class="lesson-card locked" data-lesson="science">
-            <h4 id="science-lesson-title">Science Quiz</h4>
-            <p id="science-lesson-desc">Coming soon!</p>
-            <button class="start-lesson-btn" disabled>Start</button>
-          </div>
+    <!-- STEM Lessons -->
+    <section class="lessons-section">
+      <h3>STEM Lessons</h3>
+      <div class="lessons-grid">
+        <div class="lesson-card" data-lesson="math">
+          <h4>Mathematics Puzzle</h4>
+          <p>Solve equations and unlock rewards</p>
+          <button class="start-lesson-btn">Start</button>
         </div>
-      </section>
-
-      <section class="actions-section">
-        <button id="export-data" class="primary-btn">Export Progress</button>
-        <button id="import-data" class="secondary-btn">Import Progress</button>
-      </section>
-    </main>
-  </div>
-
-  <!-- Game Screen -->
-  <div id="game-screen" class="screen">
-    <div class="game-header">
-      <button id="back-dashboard" class="icon-btn">←</button>
-      <div class="game-stats">
-        <span>Points: <span id="game-points">0</span></span>
-        <span>Timer: <span id="game-timer">60</span>s</span>
+        <div class="lesson-card" data-lesson="memory">
+          <h4>Memory Match</h4>
+          <p>Match vocabulary words</p>
+          <button class="start-lesson-btn">Start</button>
+        </div>
       </div>
-    </div>
-    <div class="game-container">
-      <h2 id="game-title">Math Quiz</h2>
-      <div id="game-content">
-        <p id="problem-text">Loading...</p>
-        <input type="number" id="math-answer" placeholder="Your answer" />
-        <button id="check-answer" class="primary-btn">Check</button>
-        <div id="feedback-message" style="margin-top:10px;"></div>
-      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ░░░ Game Screen ░░░ -->
+<div id="game-screen" class="screen">
+  <div class="game-header">
+    <button id="back-to-dashboard" class="icon-btn">←</button>
+    <div class="game-stats">
+      Points: <span id="game-points">0</span> |
+      Time: <span id="game-timer">60</span>s
     </div>
   </div>
 
-  <script src="game.js"></script>
-  <script>
-    // ------------------------------
-    // State
-    // ------------------------------
-    let userData = {
-      name: "Student",
-      lang: "en",
-      points: 0,
-      lessonsCompleted: 0,
-      badges: [],
-      mathProgress: 0
-    };
+  <div id="game-container">
+    <!-- Math game -->
+    <div id="math-game-section">
+      <h2 id="math-question">Question</h2>
+      <div id="math-options" class="options"></div>
+      <div id="math-feedback" class="feedback"></div>
+    </div>
 
-    const translations = {
-      en: {
-        welcome: "Hello",
-        lessonsLabel: "STEM Lessons",
-        mathTitle: "Math Quiz",
-        mathDesc: "Solve fun math puzzles",
-        scienceTitle: "Science Quiz",
-        scienceDesc: "Coming soon!",
-        export: "Export Progress",
-        import: "Import Progress"
-      },
-      hi: {
-        welcome: "नमस्ते",
-        lessonsLabel: "एसटीईएम पाठ",
-        mathTitle: "गणित क्विज़",
-        mathDesc: "रोचक गणित पहेलियाँ हल करें",
-        scienceTitle: "विज्ञान क्विज़",
-        scienceDesc: "जल्द आ रहा है!",
-        export: "प्रगति निर्यात करें",
-        import: "प्रगति आयात करें"
-      },
-      od: {
-        welcome: "ନମସ୍କାର",
-        lessonsLabel: "STEM ପାଠ",
-        mathTitle: "ଗଣିତ କ୍ୱିଜ୍",
-        mathDesc: "ମଜାଦାର ଗଣିତ ପଜଲ ସମାଧାନ କରନ୍ତୁ",
-        scienceTitle: "ବିଜ୍ଞାନ କ୍ୱିଜ୍",
-        scienceDesc: "ଶୀଘ୍ର ଆସୁଛି!",
-        export: "ପ୍ରଗତି ଏକ୍ସପୋର୍ଟ",
-        import: "ପ୍ରଗତି ଇମ୍ପୋର୍ଟ"
-      }
-    };
+    <!-- Memory game -->
+    <div id="memory-game-section" style="display:none;">
+      <h3>Memory Match</h3>
+      <div id="memory-grid" class="memory-grid"></div>
+      <p>Moves: <span id="memory-moves">0</span> |
+         Matches: <span id="memory-matches">0</span>/10</p>
+    </div>
+  </div>
+</div>
 
-    // ------------------------------
-    // DOM
-    // ------------------------------
-    const langScreen = document.getElementById("language-screen");
-    const dashboardScreen = document.getElementById("dashboard-screen");
-    const gameScreen = document.getElementById("game-screen");
-    const languageBtns = document.querySelectorAll(".language-btn");
-    const usernameEl = document.getElementById("username");
-    const totalPointsEl = document.getElementById("total-points");
-    const lessonsCompletedEl = document.getElementById("lessons-completed");
-    const badgesCountEl = document.getElementById("badges-count");
-    const startLessonBtns = document.querySelectorAll(".start-lesson-btn");
-    const backBtn = document.getElementById("back-dashboard");
-    const exportBtn = document.getElementById("export-data");
-    const importBtn = document.getElementById("import-data");
-    const mathAnswerInput = document.getElementById("math-answer");
-    const feedbackMessage = document.getElementById("feedback-message");
-    const checkAnswerBtn = document.getElementById("check-answer");
+<!-- ░░░ Drawer ░░░ -->
+<div id="nav-drawer" class="drawer">
+  <div class="drawer-content">
+    <nav class="drawer-nav">
+      <a href="#" class="nav-item active">Dashboard</a>
+      <a href="dashboard.html" class="nav-item">Teacher View</a>
+      <a href="#" class="nav-item" id="export-data">Export Progress</a>
+      <a href="#" class="nav-item" id="import-data">Import Progress</a>
+    </nav>
+    <button id="logout-btn" class="secondary-btn">Log Out</button>
+  </div>
+</div>
 
-    // ------------------------------
-    // Functions
-    // ------------------------------
-    function saveData() {
-      localStorage.setItem("eduquest_user", JSON.stringify(userData));
-    }
-    function loadData() {
-      const saved = localStorage.getItem("eduquest_user");
-      if (saved) userData = { ...userData, ...JSON.parse(saved) };
-    }
-    function applyLang() {
-      const t = translations[userData.lang] || translations.en;
-      document.getElementById("lessons-label").textContent = t.lessonsLabel;
-      document.getElementById("math-lesson-title").textContent = t.mathTitle;
-      document.getElementById("math-lesson-desc").textContent = t.mathDesc;
-      document.getElementById("science-lesson-title").textContent = t.scienceTitle;
-      document.getElementById("science-lesson-desc").textContent = t.scienceDesc;
-      exportBtn.textContent = t.export;
-      importBtn.textContent = t.import;
-      document.getElementById("welcome-text").innerHTML =
-        t.welcome + ", <span id='username'>" + userData.name + "</span>!";
-    }
-    function updateDashboard() {
-      usernameEl.textContent = userData.name;
-      totalPointsEl.textContent = userData.points;
-      lessonsCompletedEl.textContent = userData.lessonsCompleted;
-      badgesCountEl.textContent = userData.badges.length;
-    }
+<script src="game.js"></script>
+<script>
+/* -------------------------
+   Multilingual + Dashboard
+--------------------------*/
+const languageButtons = document.querySelectorAll('.language-btn');
+const languageScreen  = document.getElementById('language-screen');
+const dashboardScreen = document.getElementById('dashboard-screen');
+const gameScreen      = document.getElementById('game-screen');
+const startLessonBtns = document.querySelectorAll('.start-lesson-btn');
+const backBtn         = document.getElementById('back-to-dashboard');
+const gamePointsEl    = document.getElementById('game-points');
+const dashPointsEl    = document.getElementById('total-points');
+const gameTimerEl     = document.getElementById('game-timer');
 
-    // Math Game
-    let currentAnswer = 0;
-    function newMathProblem() {
-      const a = Math.floor(Math.random() * 10) + 1;
-      const b = Math.floor(Math.random() * 10) + 1;
-      currentAnswer = a + b;
-      document.getElementById("problem-text").textContent = `Solve: ${a} + ${b} = ?`;
-      mathAnswerInput.value = "";
-      feedbackMessage.textContent = "";
-    }
-    function checkAnswer() {
-      const val = parseInt(mathAnswerInput.value);
-      if (val === currentAnswer) {
-        userData.points += 10;
-        userData.mathProgress += 20;
-        if (userData.mathProgress >= 100) {
-          userData.lessonsCompleted++;
-          userData.badges.push("Math Whiz");
-          userData.mathProgress = 0;
+let userData = {language:'en',points:0,lessonsCompleted:0};
+let timerInterval = null;
+
+languageButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    userData.language = btn.dataset.lang;
+    languageScreen.classList.remove('active');
+    dashboardScreen.classList.add('active');
+    saveData();
+  });
+});
+
+startLessonBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const type = btn.closest('.lesson-card').dataset.lesson;
+    startLesson(type);
+  });
+});
+
+backBtn.addEventListener('click',()=>{
+  clearInterval(timerInterval);
+  gameScreen.classList.remove('active');
+  dashboardScreen.classList.add('active');
+  updateDashboard();
+});
+
+function startLesson(type){
+  dashboardScreen.classList.remove('active');
+  gameScreen.classList.add('active');
+  resetGameUI();
+
+  if(type==='math'){
+    document.getElementById('math-game-section').style.display='block';
+    game.startGame('math');
+    startTimer();
+  }else if(type==='memory'){
+    document.getElementById('memory-game-section').style.display='block';
+    initMemory();
+  }
+}
+
+function startTimer(){
+  let time=60;
+  gameTimerEl.textContent=time;
+  clearInterval(timerInterval);
+  timerInterval=setInterval(()=>{
+    time--;
+    gameTimerEl.textContent=time;
+    if(time<=0){ clearInterval(timerInterval); game.endGame(); }
+  },1000);
+}
+
+function resetGameUI(){
+  document.getElementById('math-game-section').style.display='none';
+  document.getElementById('memory-game-section').style.display='none';
+  document.getElementById('math-feedback').textContent='';
+}
+
+function updateDashboard(){
+  dashPointsEl.textContent=userData.points;
+}
+
+function saveData(){
+  localStorage.setItem('eduquest_user',JSON.stringify(userData));
+}
+function loadData(){
+  const d=localStorage.getItem('eduquest_user');
+  if(d) userData=JSON.parse(d);
+  updateDashboard();
+}
+
+/* -------------------------
+   Simple Memory Game Setup
+--------------------------*/
+function initMemory(){
+  const grid=document.getElementById('memory-grid');
+  grid.innerHTML='';
+  const pairs=['A','B','C','D','E'];
+  const deck=[...pairs,...pairs].sort(()=>Math.random()-0.5);
+  let first=null,moves=0,matches=0;
+  document.getElementById('memory-moves').textContent=0;
+  document.getElementById('memory-matches').textContent=0;
+  deck.forEach(letter=>{
+    const card=document.createElement('button');
+    card.textContent='?';
+    card.addEventListener('click',()=>{
+      if(card.classList.contains('done')||card===first) return;
+      card.textContent=letter;
+      if(!first){ first=card; return; }
+      moves++; document.getElementById('memory-moves').textContent=moves;
+      if(first.dataset.l===letter){
+        card.classList.add('done'); first.classList.add('done');
+        matches++; document.getElementById('memory-matches').textContent=matches;
+        if(matches===pairs.length){
+          userData.points+=20; saveData(); updateDashboard();
         }
-        saveData();
-        updateDashboard();
-        feedbackMessage.textContent = "✅ Correct! +10 points";
-        newMathProblem();
-      } else {
-        feedbackMessage.textContent = "❌ Wrong answer, try again.";
+        first=null;
+      }else{
+        setTimeout(()=>{card.textContent='?';first.textContent='?';first=null;},600);
       }
-    }
-
-    // ------------------------------
-    // Events
-    // ------------------------------
-    languageBtns.forEach(btn =>
-      btn.addEventListener("click", () => {
-        userData.lang = btn.dataset.lang;
-        saveData();
-        applyLang();
-        langScreen.classList.remove("active");
-        dashboardScreen.classList.add("active");
-      })
-    );
-
-    startLessonBtns.forEach(btn =>
-      btn.addEventListener("click", () => {
-        if (btn.closest(".lesson-card").dataset.lesson === "math") {
-          dashboardScreen.classList.remove("active");
-          gameScreen.classList.add("active");
-          newMathProblem();
-        }
-      })
-    );
-
-    backBtn.addEventListener("click", () => {
-      gameScreen.classList.remove("active");
-      dashboardScreen.classList.add("active");
-      saveData();
     });
+    card.dataset.l=letter;
+    grid.appendChild(card);
+  });
+}
 
-    checkAnswerBtn.addEventListener("click", checkAnswer);
-
-    exportBtn.addEventListener("click", () => {
-      const dataStr = JSON.stringify(userData, null, 2);
-      const blob = new Blob([dataStr], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "eduquest_progress.json";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    importBtn.addEventListener("click", () => {
-      const input = document.createElement("input");
-      input.type = "file";
-      input.accept = ".json";
-      input.onchange = e => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onload = ev => {
-          try {
-            userData = { ...userData, ...JSON.parse(ev.target.result) };
-            saveData();
-            applyLang();
-            updateDashboard();
-            alert("Progress imported!");
-          } catch {
-            alert("Invalid file.");
-          }
-        };
-        reader.readAsText(file);
-      };
-      input.click();
-    });
-
-    // ------------------------------
-    // Init
-    // ------------------------------
-    document.addEventListener("DOMContentLoaded", () => {
-      loadData();
-      applyLang();
-      updateDashboard();
-    });
-
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js").catch(console.warn);
-    }
-  </script>
+/* -------------------------
+   Init
+--------------------------*/
+document.addEventListener('DOMContentLoaded',()=>{
+  loadData();
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+});
+</script>
 </body>
 </html>
